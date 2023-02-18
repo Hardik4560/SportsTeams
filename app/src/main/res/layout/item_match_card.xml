@@ -19,7 +19,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/img_reminder"
+                android:id="@+id/txt_reminder"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@color/pink_200"
@@ -95,7 +95,7 @@
                 android:id="@+id/spacer_footer"
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
-                app:layout_constraintBottom_toTopOf="@id/img_reminder" />
+                app:layout_constraintBottom_toTopOf="@id/txt_reminder" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>

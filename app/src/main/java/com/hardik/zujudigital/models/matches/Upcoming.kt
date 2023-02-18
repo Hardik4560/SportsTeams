@@ -7,4 +7,4 @@ data class Upcoming(
     val description: String,
     val home: String,
     var homeIcon: String?,
-)
+) : java.io.Serializable

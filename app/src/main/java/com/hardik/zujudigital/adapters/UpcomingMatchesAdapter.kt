@@ -64,10 +64,22 @@ class UpcomingMatchesAdapter :
             awayUrl?.let {
                 Glide.with(this).load(Uri.parse(item.awayIcon)).into(imgAwayTeam)
             }
+
+            findViewById<TextView>(R.id.txt_reminder).setOnClickListener {
+                onItemClickListerner?.let {
+                    it(item)
+                }
+            }
         }
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    private var onItemClickListerner: ((Upcoming) -> Unit)? = null
+
+    fun setOnRemindMeClickListener(listener: (Upcoming) -> Unit) {
+        onItemClickListerner = listener
     }
 }

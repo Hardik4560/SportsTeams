@@ -1,13 +1,15 @@
 package com.hardik.zujudigital.ui.fragments
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.ProgressBar
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -16,10 +18,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hardik.zujudigital.R
 import com.hardik.zujudigital.adapters.PreviousMatchesAdapter
 import com.hardik.zujudigital.adapters.UpcomingMatchesAdapter
+import com.hardik.zujudigital.broadcastreceiver.AlarmReceiver
 import com.hardik.zujudigital.models.Team
+import com.hardik.zujudigital.models.matches.Upcoming
 import com.hardik.zujudigital.ui.MainActivity
 import com.hardik.zujudigital.ui.viewmodels.MainViewModel
+import com.hardik.zujudigital.util.DateUtils
 import com.hardik.zujudigital.util.Resource
+import java.util.Calendar
 
 class MatchesFragment : Fragment(R.layout.fragment_matches) {
 
@@ -94,9 +100,32 @@ class MatchesFragment : Fragment(R.layout.fragment_matches) {
         progressBar.visibility = View.VISIBLE
     }
 
+    private fun startAlarm(match: Upcoming) {
+
+        //TODO: remove it later for actual match time.
+        var cal = Calendar.getInstance() //DateUtils.dateToCalendar(match.date)
+        cal.add(Calendar.SECOND, 10)
+
+        val alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(context, AlarmReceiver::class.java)
+        intent.putExtra("description", match.description)
+        intent.putExtra("date", match.date)
+
+        val pendingIntent =
+            PendingIntent.getBroadcast(context, 1, intent, PendingIntent.FLAG_IMMUTABLE)
+
+
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.timeInMillis, pendingIntent)
+
+        Log.d(TAG, "Alarm set for " + cal.time)
+    }
+
     private fun setupAdapter() {
         //Upcoming
         upcomingMatchesAdapter = UpcomingMatchesAdapter()
+        upcomingMatchesAdapter.setOnRemindMeClickListener {
+            startAlarm(it)
+        }
         rvUpcoming.apply {
             adapter = upcomingMatchesAdapter
             layoutManager = LinearLayoutManager(activity).also {

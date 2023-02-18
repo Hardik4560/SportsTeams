@@ -13,10 +13,10 @@ Watch previous match highlights.
 DONE
 
 Users can set a reminder for an upcoming match.
-
+DONE?
 
 Notify the user when the match is about to start.
-
+DONE?
 
 
 
