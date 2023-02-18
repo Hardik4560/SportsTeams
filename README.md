@@ -1,32 +1,19 @@
 x
 
-Ability to show all participating teams.
-DONE
+Approach.
+1. Used 1 activity and multi fragment for the application.
+2. Used Android navigation to visually understand/design the flow of the app.
+3. Used MVVM for core architecture of the project.
+4. Used Retrofit for network api calls.
+5. Used Recyclerview with Differ 
+6. Glide for handling the image related operations.
 
-Ability to show all previous and upcoming matches.
-DONE
-
-Ability for a user to select a team and filter matches per team.
-DONE
-
-Watch previous match highlights.
-DONE
-
-Users can set a reminder for an upcoming match.
-DONE?
-
-Notify the user when the match is about to start.
-DONE?
-
-
-
-1. Used MVVM for core architecture of the project.
-2. Used Retrofit for network api calls.
-3. Used Recyclerview with Differ 
-
-4. Add room database to store the reminders
-5. Match Details Page
-6. Improved UI/UX
-7. Adding Dagger Hilt
-8. Could have created multiple viewmodel for diff models.
-9. Add Test cases and do a UI automation testing
+_________________________________
+Possible Scope of Improvements.
+_________________________________
+1. Add room database to store the reminders
+2. Match Details Page
+3. Improved UI/UX
+4. Adding Dagger Hilt
+5. Could have created multiple view-model for diff models.
+6. Add Test cases and do a UI automation testing
