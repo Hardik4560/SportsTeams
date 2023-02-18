@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/matchesFragment">
+
+    <fragment
+        android:id="@+id/teamDetailsFragment"
+        android:name="com.hardik.zujudigital.ui.fragments.TeamDetailsFragment"
+        android:label="TeamDetailsFragment" >
+        <argument
+            android:name="team"
+            app:argType="com.hardik.zujudigital.models.Team"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamListFragment"
+        android:name="com.hardik.zujudigital.ui.fragments.TeamListFragment"
+        android:label="TeamListFragment">
+        <action
+            android:id="@+id/action_teamListFragment_to_teamDetailsFragment"
+            app:destination="@id/teamDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoPlayerFragment"
+        android:name="com.hardik.zujudigital.ui.fragments.VideoPlayerFragment"
+        android:label="VideoPlayerFragment">
+        <argument
+            android:name="match"
+            app:argType="com.hardik.zujudigital.models.matches.Previous"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchesFragment"
+        android:name="com.hardik.zujudigital.ui.fragments.MatchesFragment"
+        android:label="MatchesFragment">
+        <action
+            android:id="@+id/action_matchesFragment_to_videoPlayerFragment"
+            app:destination="@id/videoPlayerFragment" />
+    </fragment>
+</navigation>
