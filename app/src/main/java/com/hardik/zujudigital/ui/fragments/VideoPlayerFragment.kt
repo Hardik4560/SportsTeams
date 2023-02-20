@@ -5,14 +5,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.MediaController
-import android.widget.VideoView
 import androidx.fragment.app.Fragment
 import com.hardik.zujudigital.R
 import com.hardik.zujudigital.models.matches.Previous
+import kotlinx.android.synthetic.main.fragment_video_player.*
 
 class VideoPlayerFragment : Fragment(R.layout.fragment_video_player) {
-
-    private lateinit var videoView: VideoView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,6 +45,6 @@ class VideoPlayerFragment : Fragment(R.layout.fragment_video_player) {
     }
 
     private fun initView(view: View) {
-        videoView = view.findViewById(R.id.videoView)
+        //Initialize your views here.
     }
 }

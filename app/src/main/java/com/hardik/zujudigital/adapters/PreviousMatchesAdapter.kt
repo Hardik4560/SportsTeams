@@ -1,22 +1,20 @@
 package com.hardik.zujudigital.adapters
 
-import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hardik.zujudigital.R
 import com.hardik.zujudigital.models.matches.Previous
-import com.hardik.zujudigital.models.matches.Upcoming
-import com.hardik.zujudigital.util.DateUtils
+import kotlinx.android.synthetic.main.item_match_row.view.*
+
 
 class PreviousMatchesAdapter :
     RecyclerView.Adapter<PreviousMatchesAdapter.PreviousMatchesViewHolder>() {
@@ -49,13 +47,11 @@ class PreviousMatchesAdapter :
     override fun onBindViewHolder(holder: PreviousMatchesViewHolder, position: Int) {
         val item = differ.currentList[position]
         holder.itemView.apply {
-            var txtHome = findViewById<TextView>(R.id.txt_team1)
-            txtHome.text = item.home
-            var txtAway = findViewById<TextView>(R.id.txt_team2)
-            txtAway.text = item.away
+            txt_team1.text = item.home
+            txt_team2.text = item.away
 
-            var imgHomeTeam = findViewById<ImageView>(R.id.img_t1)
-            var imgAwayTeam = findViewById<ImageView>(R.id.img_t2)
+            var imgHomeTeam = img_t1
+            var imgAwayTeam = img_t2
 
             val homeUrl = item.homeIcon
             val awayUrl = item.awayIcon
@@ -67,12 +63,14 @@ class PreviousMatchesAdapter :
                 Glide.with(this).load(Uri.parse(item.awayIcon)).into(imgAwayTeam)
             }
 
+            val typeface = ResourcesCompat.getFont(context, R.font.lato)
+            val typefaceBold = ResourcesCompat.getFont(context, R.font.lato_bold)
             if (item.winner == item.home) {
-                txtHome.typeface = Typeface.DEFAULT_BOLD
-                txtAway.typeface = Typeface.DEFAULT
+                txt_team1.typeface = typefaceBold
+                txt_team2.typeface = typeface
             } else {
-                txtAway.typeface = Typeface.DEFAULT_BOLD
-                txtHome.typeface = Typeface.DEFAULT
+                txt_team2.typeface = typefaceBold
+                txt_team1.typeface = typeface
             }
 
             setOnClickListener {

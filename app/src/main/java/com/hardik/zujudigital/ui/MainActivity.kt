@@ -1,16 +1,16 @@
 package com.hardik.zujudigital.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.hardik.zujudigital.R
 import com.hardik.zujudigital.repository.DataRepository
 import com.hardik.zujudigital.ui.viewmodels.MainViewModel
 import com.hardik.zujudigital.ui.viewmodels.MainViewModelProviderFactory
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,15 +25,14 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        var bottomNavView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         var mainNavHostFragment = findNavController(R.id.mainNavHostFragment)
-        bottomNavView.setupWithNavController(mainNavHostFragment)
+        bottomNavigationView.setupWithNavController(mainNavHostFragment)
 
         mainNavHostFragment.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.videoPlayerFragment || destination.id == R.id.teamDetailsFragment) {
-                bottomNavView.visibility = View.GONE
+                bottomNavigationView.visibility = View.GONE
             } else {
-                bottomNavView.visibility = View.VISIBLE
+                bottomNavigationView.visibility = View.VISIBLE
             }
         }
     }

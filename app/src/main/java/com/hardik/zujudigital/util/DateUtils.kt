@@ -1,16 +1,9 @@
 package com.hardik.zujudigital.util
 
-import android.os.Build
-import androidx.annotation.RequiresApi
-import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.Instant
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
-import java.util.Calendar
-import java.util.Date
-import java.util.Locale
-import java.util.TimeZone
+import java.util.*
 
 class DateUtils {
 

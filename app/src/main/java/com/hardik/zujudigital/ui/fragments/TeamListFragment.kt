@@ -2,24 +2,18 @@ package com.hardik.zujudigital.ui.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.hardik.zujudigital.R
 import com.hardik.zujudigital.adapters.TeamsAdapter
 import com.hardik.zujudigital.ui.MainActivity
 import com.hardik.zujudigital.ui.viewmodels.MainViewModel
 import com.hardik.zujudigital.util.Resource
+import kotlinx.android.synthetic.main.fragment_team_list.*
 
 class TeamListFragment : Fragment(R.layout.fragment_team_list) {
-
-    lateinit var progressBar: ProgressBar
-    lateinit var textView: TextView
-    lateinit var recyclerView: RecyclerView
 
     private lateinit var teamsAdapter: TeamsAdapter
     private lateinit var viewModel: MainViewModel
@@ -27,7 +21,7 @@ class TeamListFragment : Fragment(R.layout.fragment_team_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initView(view)
+        initView()
         setupAdapter()
         initViewModel()
     }
@@ -46,7 +40,7 @@ class TeamListFragment : Fragment(R.layout.fragment_team_list) {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let {
-                        textView.text = it
+                        txt_empty_list_teams.text = it
                     }
                 }
                 is Resource.Loading -> {
@@ -57,17 +51,17 @@ class TeamListFragment : Fragment(R.layout.fragment_team_list) {
     }
 
     private fun hideProgressBar() {
-        progressBar.visibility = View.GONE
+        progress_bar_teams.visibility = View.GONE
     }
 
     private fun showProgressBar() {
-        progressBar.visibility = View.VISIBLE
+        progress_bar_teams.visibility = View.VISIBLE
     }
 
     private fun setupAdapter() {
         teamsAdapter = TeamsAdapter()
 
-        recyclerView.apply {
+        rv_teams.apply {
             adapter = teamsAdapter
             layoutManager = LinearLayoutManager(activity)
         }
@@ -82,10 +76,7 @@ class TeamListFragment : Fragment(R.layout.fragment_team_list) {
         }
     }
 
-    private fun initView(view: View) {
-        progressBar = view.findViewById(R.id.progress_bar)
-        textView = view.findViewById(R.id.txt_empty_list)
-        recyclerView = view.findViewById(R.id.rv_teams)
-
+    private fun initView() {
+        //Use this method for initializing views.
     }
 }

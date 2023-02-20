@@ -7,11 +7,15 @@
     <fragment
         android:id="@+id/teamDetailsFragment"
         android:name="com.hardik.zujudigital.ui.fragments.TeamDetailsFragment"
-        android:label="TeamDetailsFragment" >
+        android:label="TeamDetailsFragment">
         <argument
             android:name="team"
             app:argType="com.hardik.zujudigital.models.Team"
             app:nullable="true" />
+
+        <action
+            android:id="@+id/action_teamDetailsFragment_to_videoPlayerFragment"
+            app:destination="@id/videoPlayerFragment" />
     </fragment>
     <fragment
         android:id="@+id/teamListFragment"

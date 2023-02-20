@@ -37,7 +37,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_team1"
+                android:id="@+id/txt_team1_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="8dp"
@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toBottomOf="@id/spacer_header" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_t1"
+                android:id="@+id/img_t1_card"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
@@ -55,11 +55,11 @@
                 android:src="@drawable/ic_team"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_team1" />
+                app:layout_constraintTop_toBottomOf="@id/txt_team1_card" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_date"
+                android:id="@+id/txt_date_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
@@ -67,10 +67,10 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_t1" />
+                app:layout_constraintTop_toBottomOf="@id/img_t1_card" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_t2"
+                android:id="@+id/img_t2_card"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="4dp"
@@ -78,18 +78,18 @@
                 android:src="@drawable/ic_team"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_date" />
+                app:layout_constraintTop_toBottomOf="@id/txt_date_card" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txt_team2"
+                android:id="@+id/txt_team2_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="8dp"
                 android:text="Team 2"
                 app:layout_constraintBottom_toTopOf="@+id/spacer_footer"
-                app:layout_constraintEnd_toEndOf="@+id/img_t2"
-                app:layout_constraintStart_toStartOf="@+id/img_t2"
-                app:layout_constraintTop_toBottomOf="@+id/img_t2" />
+                app:layout_constraintEnd_toEndOf="@+id/img_t2_card"
+                app:layout_constraintStart_toStartOf="@+id/img_t2_card"
+                app:layout_constraintTop_toBottomOf="@+id/img_t2_card" />
 
             <Space
                 android:id="@+id/spacer_footer"

@@ -2,21 +2,15 @@ package com.hardik.zujudigital.adapters
 
 import android.net.Uri
 import android.view.LayoutInflater
-import android.view.OnReceiveContentListener
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.GlideBuilder
 import com.hardik.zujudigital.R
 import com.hardik.zujudigital.models.Team
-import com.hardik.zujudigital.models.matches.Previous
-import com.hardik.zujudigital.models.matches.Upcoming
-import com.hardik.zujudigital.util.DateUtils
+import kotlinx.android.synthetic.main.item_team_row.view.*
 
 class TeamsAdapter :
     RecyclerView.Adapter<TeamsAdapter.TeamsViewHolder>() {
@@ -48,9 +42,8 @@ class TeamsAdapter :
     override fun onBindViewHolder(holder: TeamsViewHolder, position: Int) {
         val item = differ.currentList[position]
         holder.itemView.apply {
-            findViewById<TextView>(R.id.txt_team_name).text = item.name
-            var image = findViewById<ImageView>(R.id.img_team)
-            Glide.with(this).load(Uri.parse(item.logo)).into(image)
+            txt_team_name.text = item.name
+            Glide.with(this).load(Uri.parse(item.logo)).into(img_team)
 
             setOnClickListener {
                 onItemClickListener?.let {

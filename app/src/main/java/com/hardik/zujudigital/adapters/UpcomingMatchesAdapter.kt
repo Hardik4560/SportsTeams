@@ -1,21 +1,17 @@
 package com.hardik.zujudigital.adapters
 
 import android.net.Uri
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hardik.zujudigital.R
 import com.hardik.zujudigital.models.matches.Upcoming
-import com.hardik.zujudigital.ui.viewmodels.MainViewModel
 import com.hardik.zujudigital.util.DateUtils
+import kotlinx.android.synthetic.main.item_match_card.view.*
 
 class UpcomingMatchesAdapter :
     RecyclerView.Adapter<UpcomingMatchesAdapter.UpcomingMatchesViewHolder>() {
@@ -44,16 +40,15 @@ class UpcomingMatchesAdapter :
         )
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: UpcomingMatchesViewHolder, position: Int) {
         val item = differ.currentList[position]
         holder.itemView.apply {
-            findViewById<TextView>(R.id.txt_team1).text = item.home
-            findViewById<TextView>(R.id.txt_team2).text = item.away
-            findViewById<TextView>(R.id.txt_date).text = DateUtils.dateToTime(item.date)
+            txt_team1_card.text = item.home
+            txt_team2_card.text = item.away
+            txt_date_card.text = DateUtils.dateToTime(item.date)
 
-            var imgHomeTeam = findViewById<ImageView>(R.id.img_t1)
-            var imgAwayTeam = findViewById<ImageView>(R.id.img_t2)
+            var imgHomeTeam = img_t1_card
+            var imgAwayTeam = img_t2_card
 
             val homeUrl = item.homeIcon
             val awayUrl = item.awayIcon
@@ -65,7 +60,7 @@ class UpcomingMatchesAdapter :
                 Glide.with(this).load(Uri.parse(item.awayIcon)).into(imgAwayTeam)
             }
 
-            findViewById<TextView>(R.id.txt_reminder).setOnClickListener {
+            txt_reminder.setOnClickListener {
                 onItemClickListerner?.let {
                     it(item)
                 }

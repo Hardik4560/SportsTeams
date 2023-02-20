@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hardik.zujudigital.models.Team
 import com.hardik.zujudigital.models.TeamsResponse
 import com.hardik.zujudigital.models.matches.MatchesResponse
 import com.hardik.zujudigital.repository.DataRepository
